@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <script>
+        let dados = [10, 20, 30, 40, 50];
+        let posicao = 0;
+
+        console.log(dados);
+
+        c = 1;
+        for (let i = posicao; i < dados.length - 1; i++){
+        dados[i] = dados[i + 1];
+        console.log("vetor depois da " + c + "ª passagem = "+ dados);
+        c++
+        }
+
+        let removido = dados.pop()
+        console.log("Removido = " + removido);
+        console.log(dados);
+
+    </script>
+</head>
+<body>
+</body>
+</html>
