@@ -36,7 +36,7 @@
 <button onclick="removerInicio()">Remover no inicio</button>
 <br>
 <button onclick="contar()">Contar elementos</button>
-<button onclick="buscar()">Buscar nome</button>
+<button onclick="removerElemento()">Remover nome</button>
 <button onclick="mostrar()">Mostrar Lista</button>
  
 <div id="saida"></div>
@@ -112,6 +112,35 @@
         document.getElementById("saida").innerHTML = "Quantidade de elementos: "
         + quantidade;
     }
+
+    function removerElemento() {
+        let nome = document.getElementById("nome").value;
+        if (nome === "") {
+            alert("Digite um nome");
+            return;
+        }
+        let atual = inicio;
+        let anterior = -1;
+        while (atual !== -1) {
+            if (valores[atual] === nome) {
+                if (anterior === -1) {
+                    inicio = proximo[atual];
+                } else {
+                    proximo[anterior] = proximo[atual];
+                }
+                if (proximo[atual] === -1) {
+                    ultimo = anterior;
+                }
+                mostrar();
+                return;
+            }
+            document.getElementById("nome").value = "";
+            anterior = atual;
+            atual = proximo[atual];
+        }
+        document.getElementById("nome").value = "";
+        alert("Nome não encontrado");
+    }
     
     function mostrar() {
         let resultado = "";
@@ -119,6 +148,8 @@
  
         if (inicio === -1) {
             resultado = "Lista vazia";
+            document.getElementById("saida").innerHTML = resultado;
+            return;
         }
  
        while (atual !== -1) {
@@ -128,7 +159,7 @@
  
         resultado += "null";
  
-        document.getElementById("saida").innerHTML = resultado;
+    document.getElementById("saida").innerHTML = resultado;
     }
 </script>
  
